@@ -2,9 +2,6 @@
 __pycache__/
 *.pyc
 
-# Environment
-.env
-
 # Data files
 smart_attendance/data/*.csv
 smart_attendance/data/*.pkl
@@ -12,7 +9,3 @@ smart_attendance/data/*.yml
 
 # Images / dataset
 smart_attendance/data/images/
-
-# OS junk
-.DS_Store
-Thumbs.db
