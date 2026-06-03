@@ -1,11 +1,117 @@
-# Python cache
+# =============================================================================
+# VisionAttend · root .gitignore (canonical — covers backend, frontend, Electron)
+# =============================================================================
+
+# --- Environment files -------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# --- Python (backend) --------------------------------------------------------
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# Data files
-smart_attendance/data/*.csv
-smart_attendance/data/*.pkl
-smart_attendance/data/*.yml
+# Virtualenvs
+.venv/
+venv/
+env/
+ENV/
 
-# Images / dataset
-smart_attendance/data/images/
+# Test / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+
+# Type checkers / linters
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.pytype/
+
+# --- Node / Vite (frontend) --------------------------------------------------
+node_modules/
+dist/
+dist-ssr/
+.vite/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Electron (future) -------------------------------------------------------
+out/
+release/
+release-builds/
+electron/dist/
+electron/out/
+*.app
+*.dmg
+*.exe.blockmap
+
+# --- Datasets, models, runtime artifacts -------------------------------------
+# Backend writable storage root (configurable via STORAGE_DIR).
+backend/data/
+backend/storage/
+
+# Legacy prototype runtime (kept locally for the user's review; never committed).
+/data/
+
+# Trained model / serialized artifacts.
+*.pkl
+*.h5
+*.onnx
+*.pt
+*.pth
+*.tflite
+*.yml
+!**/config/*.yml
+
+# Bulk CSV exports.
+*.csv
+
+# --- IDE / editor ------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Database files ----------------------------------------------------------
+*.db
+*.sqlite
+*.sqlite3
+
+# --- Claude Code / AI tooling -----------------------------------------------
+.claude/
+context.md
+
+# --- OS junk -----------------------------------------------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini

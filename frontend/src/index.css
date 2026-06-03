@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    font-feature-settings: 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+    /* Smooth in-app scroll (e.g. anchor jumps, focus-restores). */
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background-color: rgb(99 102 241 / 0.35);
+  }
+
+  /* Unified focus ring — keyboard only, never mouse. */
+  :focus {
+    outline: none;
+  }
+  :focus-visible {
+    outline: 2px solid rgb(99 102 241 / 0.65);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  /* Respect user preference for reduced motion. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-surface-panel border border-surface-border rounded-xl shadow-card;
+  }
+
+  .card-padded {
+    @apply card p-5;
+  }
+
+  .input {
+    @apply w-full bg-surface-raised border border-surface-border rounded-lg
+           px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-500
+           focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/40
+           transition-colors;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2
+           text-sm font-medium transition-colors disabled:opacity-50
+           disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-white hover:bg-accent-hover;
+  }
+
+  .btn-ghost {
+    @apply btn text-zinc-300 hover:bg-surface-hover hover:text-zinc-100;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2 rounded-lg text-sm
+           text-zinc-400 hover:text-zinc-100 hover:bg-surface-hover
+           transition-colors;
+  }
+
+  .nav-item-active {
+    @apply bg-surface-hover text-zinc-100;
+  }
+}
+
+/* Hide scrollbar utility — keeps scroll functional but hides the track */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Scrollbar styling — desktop-grade subtle look */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(63 63 70 / 0.6);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(82 82 91 / 0.8);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
